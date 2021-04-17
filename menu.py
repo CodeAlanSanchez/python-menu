@@ -62,9 +62,7 @@ class Menu():
     def input_item(self):
         name = input("\nInput the item name: \n\n> ")
         amount = self.validate_num(input("\nInput the amount of items: \n\n> "))
-        print(amount)
         price = self.validate_price(input("\nInput the price of each item: \n\n> $").replace("$", ""))
-        print(price)
         return Item(name, price, amount)
 
     def add_item(self, item):
