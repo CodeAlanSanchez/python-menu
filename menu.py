@@ -37,9 +37,16 @@ class Menu():
         except:
             return self.validate_input("Please input a valid option...\n> ")
 
+    def validate_num(self, num):
+        try:
+            num = int(num)
+            return num
+        except:
+            return self.validate_num(input("\nPlease enter valid number: \n\n> "))
+
     def input_item(self):
         name = input("\nInput the item name: \n\n> ")
-        amount = input("\nInput the amount of items: \n\n> ")
+        amount = self.validate_num(input("\nInput the amount of items: \n\n> "))
         price = input("\nInput the price of each item: \n\n> $")
         return Item(name, amount, price)
 
