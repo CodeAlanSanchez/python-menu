@@ -15,6 +15,9 @@ class Item():
     def get_price(self):
         return self.price
 
+    def get_total_price(self):
+        return self.price * self.amount
+
     def set_price(self, price):
         self.price = price
 
