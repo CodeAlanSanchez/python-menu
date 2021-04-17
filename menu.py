@@ -39,7 +39,7 @@ class Menu():
             if option_range and range(option_range)[ans]:
                 return ans
         except:
-            return self.validate_input("Please input a valid option...\n> ")
+            return self.validate_input(input("\nPlease input a valid option...\n> "))
 
     def validate_num(self, num):
         try:
@@ -57,13 +57,15 @@ class Menu():
             price = int(price)
             return price
         except:
-            return self.validate_price(input("\nPlease enter valid price: \n\n> $ "))
+            return self.validate_price(input("\nPlease enter valid price: \n\n> $"))
 
     def input_item(self):
         name = input("\nInput the item name: \n\n> ")
         amount = self.validate_num(input("\nInput the amount of items: \n\n> "))
-        price = self.validate_price(input("\nInput the price of each item: \n\n> $ ").replace("$", ""))
-        return Item(name, amount, price)
+        print(amount)
+        price = self.validate_price(input("\nInput the price of each item: \n\n> $").replace("$", ""))
+        print(price)
+        return Item(name, price, amount)
 
     def add_item(self, item):
         for i in self.list_of_items:
@@ -121,6 +123,6 @@ class Menu():
                 input("\nInput new amount: \n\n> ")))
             self.edit_item(item)
         elif ans == "3" or ans.lower() == "price":
-            item.set_price_per(self.validate_price(
+            item.set_price(self.validate_price(
                 input("\nInput new price: \n\n> ")))
             self.edit_item(item)
