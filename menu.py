@@ -84,4 +84,41 @@ class Menu():
         print("\nTotal: ${total:.2f}".format(total=total/100))
         input("\nPress enter to continue...")
 
+    def show_edit_menu(self):
+        iteration = 0
+        if len(self.list_of_items) <= 0:
+            print("\nNothing to edit...")
+            input("\nPress enter to continue...")
+            return
+        print()
+        for i in self.list_of_items:
+            print("{}. {} {} (${price_per:.2f} per): ${price_total:.2f}".format(str(iteration+1), i.get_amount(),
+                                                                                i.get_name(), price_per=i.get_price_per()/100, price_total=i.get_price_total()/100))
+            iteration = iteration + 1
+        ans = self.validate_num(input("\nWhat item would to edit?: \n\n> "))
+        if ans-1 <= len(self.list_of_items):
+            item = self.list_of_items[ans-1]
+            self.edit_item(item)
+    
+    def edit_item(self, item):
+        print("\nWhat would you like to edit? ({} {} (${price_per:.2f} per): ${price_total:.2f})".format(
+            item.get_amount(), item.get_name(), price_per=item.get_price_per()/100, price_total=item.get_price_total()/100))
+        print("\n1. Name")
+        print("2. Amount")
+        print("3. Price")
+        print("\n4. Done")
+        ans = input("\n> ")
+        if ans == "1" or ans.lower() == "name":
+            item.set_name(input("\nInput new name: \n\n> "))
+            self.edit_item(item)
+        elif ans == "2" or ans.lower() == "amount":
+            item.set_amount(self.validate_amount(
+                input("\nInput new amount: \n\n> ")))
+            self.edit_item(item)
+        elif ans == "3" or ans.lower() == "price":
+            item.set_price_per(self.validate_price(
+                input("\nInput new price: \n\n> ")))
+            self.edit_item(item)
+
+
 menu = Menu("henry").show_menu()
