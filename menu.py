@@ -1,4 +1,5 @@
 import math
+import item
 
 class Menu():
 
@@ -17,7 +18,7 @@ class Menu():
         print("2. Add Item")
         print("3. Edit Item\n")
         print("4. Quit")
-        ans = input("\n> ")
+        ans = self.validate_input(input("\n> "))
         if ans == 1:
             pass
         if ans == 2:
@@ -26,3 +27,11 @@ class Menu():
             pass
         if ans == 4:
             pass
+    
+    def validate_input(self, ans, option_range):
+        try:
+            ans = int(ans)
+            if option_range and range(option_range)[ans]:
+                return ans
+        except:
+            return self.validate_input("Please input a valid option...\n> ")
