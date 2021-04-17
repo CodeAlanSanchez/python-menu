@@ -25,9 +25,11 @@ class Menu():
             self.add_item(self.input_item())
             self.show_menu()
         if ans == 2:
+            self.show_items()
             self.show_menu()
         if ans == 3:
-            pass
+            self.show_edit_menu()
+            self.show_menu()
         if ans == 4:
             pass
     
