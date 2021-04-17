@@ -14,15 +14,15 @@ class Menu():
         print(self.line)
         print(math.floor(len(self.line)/2-len(self.title)/2)*" "+self.title+"\n")
         print(self.line+"\n")
-        print("1. Show List")
-        print("2. Add Item")
+        print("1. Add Item")
+        print("2. Show List")
         print("3. Edit Item\n")
         print("4. Quit")
         ans = self.validate_input(input("\n> "), 4)
         if ans == 1:
+            self.add_item(self.input_item())
             self.show_menu()
         if ans == 2:
-            self.add_item(self.input_item())
             self.show_menu()
         if ans == 3:
             pass
