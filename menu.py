@@ -20,10 +20,10 @@ class Menu():
         print("4. Quit")
         ans = self.validate_input(input("\n> "), 4)
         if ans == 1:
-            self.add_item(self.input_item())
             self.show_menu()
         if ans == 2:
-            pass
+            self.add_item(self.input_item())
+            self.show_menu()
         if ans == 3:
             pass
         if ans == 4:
@@ -53,12 +53,12 @@ class Menu():
             price = int(price)
             return price
         except:
-            return self.validate_price(input("\nPlease enter valid price: \n\n> "))
+            return self.validate_price(input("\nPlease enter valid price: \n\n> $ "))
 
     def input_item(self):
         name = input("\nInput the item name: \n\n> ")
         amount = self.validate_num(input("\nInput the amount of items: \n\n> "))
-        price = input("\nInput the price of each item: \n\n> $")
+        price = self.validate_price(input("\nInput the price of each item: \n\n> $ ").replace("$", ""))
         return Item(name, amount, price)
 
     def add_item(self, item):
@@ -83,3 +83,5 @@ class Menu():
             iteration = iteration + 1
         print("\nTotal: ${total:.2f}".format(total=total/100))
         input("\nPress enter to continue...")
+
+menu = Menu("henry").show_menu()
