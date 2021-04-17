@@ -1,5 +1,6 @@
 import math
 from item import Item
+import os
 
 class Menu():
 
@@ -11,8 +12,9 @@ class Menu():
         self.title = title
     
     def show_menu(self):
+        os.system("clear")
         print(self.line)
-        print(math.floor(len(self.line)/2-len(self.title)/2)*" "+self.title+"\n")
+        print(math.floor(len(self.line)/2-len(self.title)/2)*" "+self.title)
         print(self.line+"\n")
         print("1. Add Item")
         print("2. Show List")
@@ -101,6 +103,7 @@ class Menu():
             self.edit_item(item)
     
     def edit_item(self, item):
+        os.system("clear")
         print("\nWhat would you like to edit? ({} {} (${price_per:.2f} per): ${price_total:.2f})".format(
             item.get_amount(), item.get_name(), price_per=item.get_price_per()/100, price_total=item.get_price_total()/100))
         print("\n1. Name")
@@ -119,6 +122,3 @@ class Menu():
             item.set_price_per(self.validate_price(
                 input("\nInput new price: \n\n> ")))
             self.edit_item(item)
-
-
-menu = Menu("henry").show_menu()
