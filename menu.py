@@ -44,6 +44,17 @@ class Menu():
         except:
             return self.validate_num(input("\nPlease enter valid number: \n\n> "))
 
+    def validate_price(self, price):
+        try:
+            if "." in price:
+                price = price.replace(".", "")
+            else:
+                price = price + "00"
+            price = int(price)
+            return price
+        except:
+            return self.validate_price(input("\nPlease enter valid price: \n\n> "))
+
     def input_item(self):
         name = input("\nInput the item name: \n\n> ")
         amount = self.validate_num(input("\nInput the amount of items: \n\n> "))
