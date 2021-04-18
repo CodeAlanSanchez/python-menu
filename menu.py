@@ -1,6 +1,9 @@
 import math
 from item import Item
 import os
+from datetime import datetime
+
+today = datetime.now().strftime("%A %d")
 
 class Menu():
 
@@ -15,6 +18,7 @@ class Menu():
         os.system("clear")
         print(self.line)
         print(math.floor(len(self.line)/2-len(self.title)/2)*" "+self.title)
+        print(math.floor(len(self.line)/2-len(today)/2)*" "+today)
         print(self.line+"\n")
         print("1. Add Item")
         print("2. Show List")
